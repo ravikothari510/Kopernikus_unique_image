@@ -1,17 +1,16 @@
 import cv2
-import numpy as np
 import os
-import matplotlib.pyplot as plt
 
 from imaging_interview import(
 preprocess_image_change_detection,
 compare_frames_change_detection)
 
-img_list = os.listdir(r'c23')
+img_list = os.listdir(r'20_c')
 unique_img_list = []
-print(len(img_list))
+original_length= len(img_list)
 
 while len(img_list)!=0:
+    # print(len(img_list))
     img_path_1 = img_list[0]
     unique_img_list.append(img_path_1)
     
@@ -32,15 +31,15 @@ while len(img_list)!=0:
     img_list=temp_list
 
 
-print(len(unique_img_list))
+print(f"Total number of frames : {original_length}, Number of unique frames : {len(unique_img_list)}, Number of duplicates : {original_length-len(unique_img_list)}")
 
-try:
-    os.makedirs(r'unique_pics')
-except:pass
+# try:
+#     os.makedirs(r'unique_pics')
+# except:pass
 
-for u_img in unique_img_list:
-    img =cv2.imread(os.path.join('c23',u_img))
-    cv2.imwrite(os.path.join('unique_pics',u_img),img)
+# for u_img in unique_img_list:
+#     img =cv2.imread(os.path.join('c23',u_img))
+#     cv2.imwrite(os.path.join('unique_pics',u_img),img)
 
 
 
